@@ -1,0 +1,15 @@
+name: Publicar site
+# Tudo o que entra no ramo main é publicado (o GitHub Pages serve o ramo gh-pages).
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: git push origin HEAD:gh-pages
